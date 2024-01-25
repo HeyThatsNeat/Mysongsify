@@ -1,6 +1,8 @@
 package com.hunterSongProject.mySongsify.service;
 
 import com.hunterSongProject.mySongsify.entity.Song;
+import com.hunterSongProject.mySongsify.exception.DefaultExceptionHandling;
+import com.hunterSongProject.mySongsify.exception.ResourceNotFoundException;
 import com.hunterSongProject.mySongsify.repository.SongRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +23,8 @@ public class SongServiceImpl implements SongService {
 
   @Override
   public Song getSongById(Long id) {
-    return songRepository.findById(id).orElseThrow(() -> new RuntimeException("Song with song id " + id + " was not found"));
-  } // CHANGE THIS WITH RESOURCE NOT FOUND EXCEPTION
+    return songRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Song with song id " + id + " was not found"));
+  }
 
   @Override
   public Song addSong(Song song) {

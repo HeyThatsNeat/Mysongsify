@@ -94,7 +94,6 @@ public class Song {
             ", genre='" + genre + '\'' +
             ", artist='" + artist + '\'' +
             ", songLength='" + songLength + '\'' +
-            ", user=" + user +
             '}';
   }
 }

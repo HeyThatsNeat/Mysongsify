@@ -1,10 +1,14 @@
 package com.hunterSongProject.mySongsify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@Table(name = "users")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,7 +16,11 @@ public class User {
   private String firstName;
   private String lastName;
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  @JsonIgnore
   private List<Song> songs;
+
+  public User() {
+  }
 
   public User(String firstName, String lastName) {
     this.firstName = firstName;
@@ -49,7 +57,6 @@ public class User {
             "userId=" + userId +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
-            ", songs=" + songs +
             '}';
   }
 }

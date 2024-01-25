@@ -1,6 +1,7 @@
 package com.hunterSongProject.mySongsify.service;
 
 import com.hunterSongProject.mySongsify.entity.User;
+import com.hunterSongProject.mySongsify.exception.ResourceNotFoundException;
 import com.hunterSongProject.mySongsify.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User getUserById(Long id) {
-    return userRepository.findById(id).orElseThrow( () -> new EntityNotFoundException("User with id " + id + " does not exist"));
-  }//CHANGE THIS WITH CUSTOM EXCEPTION
+    return userRepository.findById(id).orElseThrow( () -> new ResourceNotFoundException("User with id " + id + " does not exist"));
+  }
 
   @Override
   public User addUser(User user) {
@@ -38,8 +39,8 @@ public class UserServiceImpl implements UserService {
   @Override
   public User updateUserById(Long id, User user) {
     User existingUser = getUserById(id);
-    existingUser.setFirstName(existingUser.getFirstName());
-    existingUser.setLastName(existingUser.getLastName());
+    existingUser.setFirstName(user.getFirstName());
+    existingUser.setLastName(user.getLastName());
     userRepository.save(existingUser);
     return existingUser;
   }
