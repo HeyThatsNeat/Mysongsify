@@ -7,32 +7,32 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "owners")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User {
+public class Owner {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long userId;
+  private Long ownerId;
   private String firstName;
   private String lastName;
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
   @JsonIgnore
   private List<Song> songs;
 
-  public User() {
+  public Owner() {
   }
 
-  public User(String firstName, String lastName) {
+  public Owner(String firstName, String lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
 
-  public Long getUserId() {
-    return userId;
+  public Long getOwnerId() {
+    return OwnerId;
   }
 
-  public void setUserId(Long userId) {
-    this.userId = userId;
+  public void setOwnerId(Long ownerId) {
+    this.ownerId = ownerId;
   }
 
   public String getFirstName() {
@@ -53,8 +53,8 @@ public class User {
 
   @Override
   public String toString() {
-    return "User{" +
-            "userId=" + userId +
+    return "Owner{" +
+            "ownerId=" + ownerId +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             '}';

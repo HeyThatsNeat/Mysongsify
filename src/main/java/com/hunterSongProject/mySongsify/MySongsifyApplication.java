@@ -3,7 +3,7 @@ package com.hunterSongProject.mySongsify;
 import com.hunterSongProject.mySongsify.entity.Song;
 import com.hunterSongProject.mySongsify.entity.User;
 import com.hunterSongProject.mySongsify.repository.SongRepository;
-import com.hunterSongProject.mySongsify.repository.UserRepository;
+import com.hunterSongProject.mySongsify.repository.OwnerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class MySongsifyApplication implements CommandLineRunner {
 	@Autowired
 	private SongRepository songRepository;
 	@Autowired
-	private UserRepository userRepository;
+	private OwnerRepository userRepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(MySongsifyApplication.class);
 	public static void main(String[] args) {

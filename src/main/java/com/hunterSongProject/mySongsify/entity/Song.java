@@ -14,19 +14,19 @@ public class Song {
   private String songLength;
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "owner")
-  private User user;
+  private Owner owner;
 
   public Song() {
     //hibernate will use this
   }
 
-  public Song(String name, String album, String genre, String artist, String songLength, User user) {
+  public Song(String name, String album, String genre, String artist, String songLength, Owner owner) {
     this.name = name;
     this.album = album;
     this.genre = genre;
     this.artist = artist;
     this.songLength = songLength;
-    this.user = user;
+    this.owner = owner;
   }
 
   public Long getId() {
@@ -77,12 +77,12 @@ public class Song {
     this.songLength = songLength;
   }
 
-  public User getUser() {
-    return user;
+  public Owner getOwner() {
+    return owner;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setOwner(Owner owner) {
+    this.owner = owner;
   }
 
   @Override
